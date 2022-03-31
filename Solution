@@ -1,0 +1,49 @@
+using System;
+using System.Text;
+using System.Collections.Generic;
+using System.Linq;
+
+
+namespace firstProblemMidleExam
+{
+    internal class Program
+
+    {
+        static void Main(string[] args)
+
+        {
+
+            List<string> input = Console.ReadLine().Split(" : ").ToList();
+            Dictionary<string, List<string>> courses = new Dictionary<string, List<string>>();
+
+            while (input[0]!="end")
+            {
+
+                if (!courses.ContainsKey(input[0]))
+                {
+                    courses.Add(input[0], new List<string>{input[1]});
+                }
+                else
+                {
+                    courses[input[0]].Add(input[1]);
+                }
+                
+                
+                input = Console.ReadLine().Split(" : ").ToList();
+            }
+
+            foreach (var item in courses)
+            {
+                Console.WriteLine($"{item.Key}: {item.Value.Count()}");
+                List<string> students = item.Value;
+                foreach (var st in students)
+                {
+                    Console.WriteLine($"-- {st}");
+                }
+            }
+
+            
+        }
+    }
+}
+
